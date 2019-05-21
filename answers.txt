@@ -1,0 +1,180 @@
+Number of dinos:
+dinosaurs=# SELECT COUNT(id) FROM dinos
+dinosaurs-# ;
+ count 
+-------
+   331
+(1 row)
+
+
+
+Find all the dinosaurs from the Jurassic period.
+        name         |     species      |  period  
+---------------------+------------------+----------
+ Yuanmousaurus       | Jiangyiensis     | Jurassic
+ Yinlong             | Downsi           | Jurassic
+ Yingshanosaurus     | Jichuanensis     | Jurassic
+ Yimenosaurus        | Youngi           | Jurassic
+ Yangchuanosaurus    | Shangyouensis    | Jurassic
+ Yandusaurus         | Hongheensis      | Jurassic
+ Vulcanodon          | Karibaensis      | Jurassic
+ Tuojiangosaurus     | Multispinus      | Jurassic
+ Torvosaurus         | Tanneri          | Jurassic
+ Yunnanosaurus       | Huangi           | Jurassic
+ Sinraptor           | Hepingensis      | Jurassic
+ Stegosaurus         | Armatus          | Jurassic
+ Seismosaurus        | Hallorum         | Jurassic
+ Segisaurus          | Halli            | Jurassic
+ Scutellosaurus      | Lawleri          | Jurassic
+ Scelidosaurus       | Harrisonii       | Jurassic
+ Saurophaganax       | Maximus          | Jurassic
+ Sarcosaurus         | Woodi            | Jurassic
+ Shunosaurus         | Lii              | Jurassic
+ Rhoetosaurus        | Brownei          | Jurassic
+ Poekilopleuron      | Bucklandii       | Jurassic
+ Podokesaurus        | Holyokensis      | Jurassic
+ Piatnitzkysaurus    | Floresi          | Jurassic
+ Proceratosaurus     | Bradleyi         | Jurassic
+ Patagosaurus        | Fariasi          | Jurassic
+ Pantydraco          | Caducus          | Jurassic
+ Datousaurus         | Bashanensis      | Jurassic
+ Ornitholestes       | Hermanni         | Jurassic
+
+
+
+
+ dinosaurs=# SELECT SUM(length) FROM dinos WHERE period='Cretaceous';
+   sum   
+---------
+ 1366.45
+(1 row)
+
+
+
+Find the total sum length of all the dinosaurs from the Cretaceous period.
+dinosaurs=# SELECT name, species FROM dinos WHERE period='Cretaceous';
+          name           |     species      
+-------------------------+------------------
+ Wuerhosaurus            | Homheni
+ Velociraptor            | Mongoliensis
+ Valdosaurus             | Canaliculatus
+ Utahraptor              | Ostrommaysorum
+ Urbacodon               | Itemirensis
+ Unenlagia               | Comahuensis
+ Tyrannosaurus           | Rex
+ Tylocephale             | Gilmorei
+ Tsagantegia             | Longicranialis
+ Troodon                 | Formosus
+ Triceratops             | Horridus
+ Torosaurus              | Latus
+ Thescelosaurus          | Neglectus
+ Zephyrosaurus           | Schaffi
+ Zalmoxes                | Robustus
+ Udanoceratops           | Tschizhovi
+ Telmatosaurus           | Transsylvanicus
+ Tarchia                 | Gigantea
+ Tarbosaurus             | Bataar
+ Tanius                  | Sinensis
+ Talarurus               | Plicatospineus
+ Panoplosaurus           | Mirus
+ Supersaurus             | Vivianae
+ Suchomimus              | Tenerensis
+ Styracosaurus           | Albertensis
+ Stygimoloch             | Spinifer
+ Struthiosaurus          | Austriacus
+ Struthiomimus           | Altus
+
+
+
+ Find all the dinosaurs from either the Jurassic OR Cretaceous periods, and order them by their species name alphabetically
+ dinosaurs=# SELECT name, species, period FROM dinos WHERE period='Jurassic' OR period='Cretaceous' ORDER BY species;
+          name           |     species      |   period   
+-------------------------+------------------+------------
+ Afrovenator             | Abakensis        | Cretaceous
+ Spinosaurus             | Aegyptiacus      | Cretaceous
+ Kentrosaurus            | Aethiopicus      | Jurassic
+ Deltadromeus            | Agilis           | Cretaceous
+ Lophostropheus          | Airelensis       | Jurassic
+ Apatosaurus             | Ajax             | Jurassic
+ Dromaeosaurus           | Albertensis      | Cretaceous
+ Styracosaurus           | Albertensis      | Cretaceous
+ Becklespinax            | Altispinax       | Cretaceous
+ Hypacrosaurus           | Altispinus       | Cretaceous
+ Brachiosaurus           | Altithorax       | Jurassic
+ Struthiomimus           | Altus            | Cretaceous
+ Dryosaurus              | Altus            | Jurassic
+ Leaellynasaura          | Amicagraphica    | Cretaceous
+ Erlikosaurus            | Andrewsi         | Cretaceous
+ Protoceratops           | Andrewsi         | Cretaceous
+ Deinonychus             | Antirrhopus      | Cretaceous
+ Centrosaurus            | Apertus          | Cretaceous
+ Dryptosaurus            | Aquilunguis      | Cretaceous
+ Jaxartosaurus           | Aralensis        | Cretaceous
+ Lurdusaurus             | Arenatus         | Cretaceous
+ Hylaeosaurus            | Armatus          | Cretaceous
+ Stegosaurus             | Armatus          | Jurassic
+ Dacentrurus             | Armatus          | Jurassic
+ Shanag                  | Ashile           | Cretaceous
+ Archaeornithomimus      | Asiaticus        | Cretaceous
+ Ampelosaurus            | Atacis           | Cretaceous
+ Acrocanthosaurus        | Atokensis        | Cretaceous
+
+
+
+ Find all the dinosaurs from the t_order Saurischia that are Herbivorous.
+ dinosaurs=# SELECT name, diet, t_order FROM dinos WHERE t_order='Saurischia' AND diet='Herbivorous';
+        name         |    diet     |  t_order   
+---------------------+-------------+------------
+ Yuanmousaurus       | Herbivorous | Saurischia
+ Yimenosaurus        | Herbivorous | Saurischia
+ Vulcanodon          | Herbivorous | Saurischia
+ Supersaurus         | Herbivorous | Saurischia
+ Sonidosaurus        | Herbivorous | Saurischia
+ Seismosaurus        | Herbivorous | Saurischia
+ Saltasaurus         | Herbivorous | Saurischia
+ Rebbachisaurus      | Herbivorous | Saurischia
+ Quaesitosaurus      | Herbivorous | Saurischia
+ Shunosaurus         | Herbivorous | Saurischia
+ Rhoetosaurus        | Herbivorous | Saurischia
+ Plateosaurus        | Herbivorous | Saurischia
+ Pelorosaurus        | Herbivorous | Saurischia
+ Patagosaurus        | Herbivorous | Saurischia
+ Pantydraco          | Herbivorous | Saurischia
+ Paralititan         | Herbivorous | Saurischia
+ Datousaurus         | Herbivorous | Saurischia
+ Pleurocoelus        | Herbivorous | Saurischia
+ Opisthocoelicaudia  | Herbivorous | Saurischia
+ Omeisaurus          | Herbivorous | Saurischia
+ Nigersaurus         | Herbivorous | Saurischia
+ Neuquenosaurus      | Herbivorous | Saurischia
+ Nemegtosaurus       | Herbivorous | Saurischia
+ Mussaurus           | Herbivorous | Saurischia
+ Maxakalisaurus      | Herbivorous | Saurischia
+ Malawisaurus        | Herbivorous | Saurischia
+ Mamenchisaurus      | Herbivorous | Saurischia
+ Lufengosaurus       | Herbivorous | Saurischia
+
+
+
+ Find the shortest dinosaur, and rename it Shortie.
+dinosaurs=# SELECT id, name, length FROM dinos ORDER BY length LIMIT 1;
+ id  |    name     | length 
+-----+-------------+--------
+ 160 | Liaoxiornis |   0.08
+(1 row)
+
+dinosaurs=# UPDATE dinos SET name='Shortie' WHERE id=160;
+UPDATE 1
+dinosaurs=# SELECT id, name, length FROM dinos ORDER BY length LIMIT 1;
+ id  |  name   | length 
+-----+---------+--------
+ 160 | Shortie |   0.08
+(1 row)
+
+
+
+Find the alphabetically first dinosaur, so we can make sure they're present for class.
+dinosaurs=# SELECT id, name FROM dinos ORDER BY name LIMIT 1;
+ id  |   name   
+-----+----------
+ 331 | Aardonyx
